@@ -26,6 +26,10 @@ const Index = (): JSX.Element => {
         }
     });
 
+    useEffect(() => {
+        localStorage.setItem("chakra-ui-color-mode", "dark")
+    }, [])
+
     return (
         <Box bg='#0E1924' h={"100vh"}>
             <Head>

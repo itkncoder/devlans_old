@@ -22,6 +22,10 @@ const Login = (): JSX.Element => {
         }
     });
 
+    useEffect(() => {
+        localStorage.setItem("chakra-ui-color-mode", "dark")
+    }, [])
+
     const onSubmit = async () => {
         const provider = new GoogleAuthProvider()
         const {user} = await signInWithPopup(auth, provider);
