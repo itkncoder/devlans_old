@@ -13,15 +13,17 @@ const InputField = () => {
     const [user]: any = useAuthState(auth)
 
     const sendMessage = async () => {
-        const messagesRef = doc(db, 'messages', `${new Date().getMilliseconds()}`);
-        setValue('')
-        await setDoc(messagesRef, { uid: user.uid,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            text: value,
-            createdAt: `${new Date().getHours()}:${new Date().getMinutes().toString().length == 1 ? `0${new Date().getMinutes()}` : new Date().getMinutes()}`,
-            timestamp: `${new Date().getTime()}`
-        }, { merge: true });
+        if (value) {
+            const messagesRef = doc(db, 'messages', `${new Date().getMilliseconds()}`);
+            setValue('')
+            await setDoc(messagesRef, { uid: user.uid,
+                displayName: user.displayName,
+                photoURL: user.photoURL,
+                text: value,
+                createdAt: `${new Date().getHours()}:${new Date().getMinutes().toString().length == 1 ? `0${new Date().getMinutes()}` : new Date().getMinutes()}`,
+                timestamp: `${new Date().getTime()}`
+            }, { merge: true });
+        }
     }
 
     const handleKeyDown = (e: any) => {

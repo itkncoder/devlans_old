@@ -10,7 +10,7 @@ import { signOut } from "firebase/auth";
 const Navbar = (): JSX.Element => {
 
     const {auth} = useContext(Context)
-    const [user] = useAuthState(auth)
+    const [user]: any = useAuthState(auth)
 
     const router = useRouter()
 
@@ -43,7 +43,7 @@ const Navbar = (): JSX.Element => {
             {isHome && 
                 <Menu>
                     <MenuButton>
-                        <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
+                        <Avatar size={"sm"} name={user?.displayName} src={user?.photoURL}/>
                     </MenuButton>
                     <MenuList border="0">
                         <MenuItem onClick={() => signOut(auth)}>Profildan chiqish</MenuItem>
