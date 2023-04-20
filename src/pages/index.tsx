@@ -32,15 +32,12 @@ const Index = (): JSX.Element => {
 
     return (
         <Box bg='#0E1924' h={"100vh"}>
-            <Head>
-                <link rel="shortcut icon" href="@/assets/logo.png" type="image/x-icon" />
-            </Head>
             <Layout>
                 <Box h={"100%"} w={"100%"} display={"flex"} justifyContent={"space-between"} alignItems={"start"} flexDirection={"row"}>
                     <Sidebar/>
-                    <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
+                    <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"start"} >
                         <Top />
-                        <Box display={"flex"} flexDirection={"column"} justifyContent={"start"} alignItems={"start"} >
+                        <Box display={"flex"} height={"100%"} flexDirection={"column"} justifyContent={"start"} alignItems={"start"} >
                             <MessagesBox/>
                         </Box>
                         <Box>

@@ -7,6 +7,7 @@ const Layout = ({children}: any): JSX.Element => {
     <Box h={"100vh"} minHeight={"100vh"} w={"100%"} display={"flex"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"start"} >
         <Head>
           <title>DEVLANS</title>
+          <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
         </Head>
         <Navbar/>
         {children}

@@ -1,3 +1,4 @@
+import { Context } from "@/pages/_app"
 import { ChatIcon } from "@chakra-ui/icons"
 import { Avatar, Box, Card, Text, Modal, Input,
     ModalOverlay,
@@ -9,14 +10,27 @@ import { Avatar, Box, Card, Text, Modal, Input,
     useDisclosure,
     Button, } from "@chakra-ui/react"
 import axios from "axios"
-import { useState } from "react"
+import { collection, getFirestore } from "firebase/firestore"
+import { useContext, useEffect, useState } from "react"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { useCollection } from "react-firebase-hooks/firestore"
 
 const Sidebar = (): JSX.Element => {
+
+    const { auth, db, firebase } = useContext(Context)
+    const [user]: any = useAuthState(auth)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [ userName, setName ] = useState('')
     const [ msg, setMsg ] = useState('')
+
+    const [value, loading, error] = useCollection(
+        collection(getFirestore(firebase), 'chats'),
+        {
+            snapshotListenOptions: { includeMetadataChanges: true },    
+        }
+    );
 
     const onSubmit = async () => {
         const TOKEN = '6219285371:AAGj1X5HDmpgKE4wTFISfHgb5wgNhErUm-g'
@@ -65,41 +79,22 @@ const Sidebar = (): JSX.Element => {
                 </Modal>
             </Box>
             <Box w={"250px"} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"15px"}>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
+                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                    <Avatar size={"sm"} name="DEVLANS" src="https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true"/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>KNCoder’s book siusf sdfhsdf </Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
+                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>DEVLANS</Text>
+                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
                     </Box>
                 </Card>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>KNCoder’s book siusf sdfhsdf </Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
-                    </Box>
-                </Card>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>KNCoder’s book siusf sdfhsdf </Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
-                    </Box>
-                </Card>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>KNCoder’s book siusf sdfhsdf </Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
-                    </Box>
-                </Card>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="USER" src='https://bit.ly/dan-abramov'/>
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>KNCoder’s book siusf sdfhsdf </Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
-                    </Box>
-                </Card>
+                {value?.docs.map(i => (
+                    <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                        <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
+                        <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
+                            <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>{i.data().displayName}</Text>
+                            <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
+                        </Box>
+                    </Card>
+                ))}
             </Box>
         </Box>
     )

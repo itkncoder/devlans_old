@@ -8,11 +8,12 @@ import { useContext, useEffect } from 'react'
 import { Context } from './_app'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { doc, deleteDoc, setDoc } from "firebase/firestore";
 
 const Login = (): JSX.Element => {
 
-    const { auth } = useContext(Context)
-    const [user] = useAuthState(auth)
+    const { auth, db } = useContext(Context)
+    const [user]: any = useAuthState(auth)
 
     const router = useRouter()
 
@@ -28,7 +29,20 @@ const Login = (): JSX.Element => {
 
     const onSubmit = async () => {
         const provider = new GoogleAuthProvider()
-        const {user} = await signInWithPopup(auth, provider);
+        const chatsRef = doc(db, 'chats', `${new Date().getMilliseconds()}`);
+
+        await signInWithPopup(auth, provider);
+
+        while (!user?.displayName) {
+            await setDoc(chatsRef,
+            { 
+                uid: user?.uid,
+                displayName: user?.displayName,
+                photoURL: user?.photoURL,
+                timestamp: `${new Date().getTime()}`
+            },
+            { merge: true });
+        }
     }
 
     return (

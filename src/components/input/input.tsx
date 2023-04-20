@@ -1,15 +1,15 @@
 import { Context } from "@/pages/_app"
 import { ArrowRightIcon, AttachmentIcon } from "@chakra-ui/icons"
 import { Box, Input, InputGroup, InputLeftElement, InputRightElement } from "@chakra-ui/react"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { collection, doc, getFirestore, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 
 const InputField = () => {
 
     const [value, setValue] = useState('')
 
-    const { auth, db, firebase } = useContext(Context)
+    const { auth, db } = useContext(Context)
     const [user]: any = useAuthState(auth)
 
     const sendMessage = async () => {

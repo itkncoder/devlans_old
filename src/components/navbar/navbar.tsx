@@ -23,7 +23,7 @@ const Navbar = (): JSX.Element => {
     }, [router.pathname])
 
     return (
-        <Box boxShadow={"0px 0px 40px #161616"} bg={"#18222E"} paddingY={"6px"} borderBottom={"0.5px solid #2B2B2B"} paddingX="20px" w={"100%"} display="flex" justifyContent="space-between" alignItems="center">
+        <Box boxShadow={"0px 0px 40px #161616"} bg={"#18222E"} paddingY={"8px"} borderBottom={"0.5px solid #2B2B2B"} paddingX="20px" w={"100%"} display="flex" justifyContent="space-between" alignItems="center">
             {!isHome && <Link className="hover:underline h-fit" style={{padding: "8px", fontSize: "18px"}} href={"https://t.me/kncoder"}>Murojaat uchun</Link>}
             {isHome && <Box display="flex" justifyContent="center" alignItems="center" gap="20px">
                 <Menu>
@@ -31,14 +31,9 @@ const Navbar = (): JSX.Element => {
                         <HamburgerIcon fontSize="28px" />
                     </MenuButton>
                     <MenuList border="0">
-                        <MenuItem>Download</MenuItem>
-                        <MenuItem>Create a Copy</MenuItem>
-                        <MenuItem>Mark as Draft</MenuItem>
-                        <MenuItem>Delete</MenuItem>
-                        <MenuItem>Attend a Workshop</MenuItem>
+                        <MenuItem><a target="_blank" href="https://t.me/kncoder">Contact</a></MenuItem>
                     </MenuList>
                 </Menu>
-                <Input fontSize={"sm"} variant='filled' border={"2px solid #1F2E3D"} paddingX="30px" borderRadius="8px" placeholder='Qidiruv...' />
             </Box>}
             {isHome && 
                 <Menu>
