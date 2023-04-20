@@ -9,6 +9,7 @@ import { Context } from "./_app"
 import { useRouter } from "next/router"
 import { onAuthStateChanged } from "firebase/auth"
 import { useAuthState } from "react-firebase-hooks/auth"
+import Head from "next/head"
 
 const Index = (): JSX.Element => {
 
@@ -27,6 +28,9 @@ const Index = (): JSX.Element => {
 
     return (
         <Box bg='#0E1924' h={"100vh"}>
+            <Head>
+                <link rel="shortcut icon" href="@/assets/logo.png" type="image/x-icon" />
+            </Head>
             <Layout>
                 <Box h={"100%"} w={"100%"} display={"flex"} justifyContent={"space-between"} alignItems={"start"} flexDirection={"row"}>
                     <Sidebar/>

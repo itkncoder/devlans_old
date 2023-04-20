@@ -59,7 +59,7 @@ const Sidebar = (): JSX.Element => {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button colorScheme='blue' mr={3} onClick={onSubmit}>Jo'natish</Button>
+                            <Button colorScheme={'blue'} mr={3} onClick={onSubmit}>Jo&apos;natish</Button>
                         </ModalFooter>
                     </ModalContent>
                 </Modal>

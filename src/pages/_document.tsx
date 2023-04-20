@@ -1,6 +1,5 @@
-import { Html, Main, NextScript } from 'next/document'
+import { Html, Main, NextScript, Head } from 'next/document'
 import { useEffect } from 'react'
-import Head from 'next/head'
 
 const _document = () => {
 
@@ -10,10 +9,7 @@ const _document = () => {
 
   return (
       <Html lang='en'>
-        <Head>
-          <title>DEVLANS</title>
-          <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
