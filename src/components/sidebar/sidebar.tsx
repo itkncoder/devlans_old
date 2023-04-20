@@ -45,16 +45,16 @@ const Sidebar = (): JSX.Element => {
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                    <ModalHeader>Murojaat qilish</ModalHeader>
-                    <ModalCloseButton />
+                        <ModalHeader>Murojaat qilish</ModalHeader>
+                        <ModalCloseButton />
                         <ModalBody display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"start"}>
-                            <Box display={"flex"} flexDirection={"column"} gap={"5px"} justifyContent={"start"}>
-                                <Text fontSize={"lg"}>Ismingizni kiriting:</Text>
-                                <Input value={userName} onChange={e => setName(e.target.value)} variant='filled' placeholder='Ismingiz...' />
-                            </Box>
-                            <Box display={"flex"} flexDirection={"column"} gap={"5px"} justifyContent={"start"}>
-                                <Text fontSize={"lg"}>Izohingizni yozing:</Text>
-                                <Input value={msg} onChange={e => setMsg(e.target.value)} variant='filled' placeholder='Izohingiz...' />
+                        <Box display={"flex"} flexDirection={"column"} gap={"5px"} justifyContent={"start"}>
+                            <Text fontSize={"lg"}>Ismingizni kiriting:</Text>
+                            <Input value={userName} onChange={e => setName(e.target.value)} variant='filled' placeholder='Ismingiz...' />
+                        </Box>
+                        <Box display={"flex"} flexDirection={"column"} gap={"5px"} justifyContent={"start"}>
+                            <Text fontSize={"lg"}>Izohingizni yozing:</Text>
+                            <Input value={msg} onChange={e => setMsg(e.target.value)} variant='filled' placeholder='Izohingiz...' />
                             </Box>
                         </ModalBody>
 

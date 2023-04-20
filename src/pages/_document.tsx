@@ -1,5 +1,6 @@
-import { Html, Main, NextScript, Head } from 'next/document'
+import { Html, Main, NextScript } from 'next/document'
 import { useEffect } from 'react'
+import Head from 'next/head'
 
 const _document = () => {
 

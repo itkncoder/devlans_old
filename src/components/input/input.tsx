@@ -36,21 +36,20 @@ const InputField = () => {
                 <InputLeftElement
                     marginX={"10px"}
                     color='gray.300'
-                    children={
-                        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                            <input style={{display: "none", width: "70px"}} id="file" type="file" />
-                            <label style={{width: "70px"}} htmlFor="file">
-                                <AttachmentIcon w={"70px"} fontSize={"lg"} _hover={{color: "#B0B0B0"}} cursor={"pointer"} />
-                            </label>
-                        </Box>
-                    }
-                />
+                >
+                    <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                        <input style={{display: "none", width: "70px"}} id="file" type="file" />
+                        <label style={{width: "70px"}} htmlFor="file">
+                            <AttachmentIcon w={"70px"} fontSize={"lg"} _hover={{color: "#B0B0B0"}} cursor={"pointer"} />
+                        </label>
+                    </Box>
+                </InputLeftElement>
                 <Input onKeyDown={handleKeyDown} value={value} onChange={e => setValue(e.target.value)} variant='flushed' bg={"#18222E"} borderColor={"#18222E"} paddingLeft={"55px"} size={"lg"} fontSize={"14px"} borderRadius={"0"} placeholder='Yozing...' />
-                <InputRightElement children={
+                <InputRightElement>
                     <Box onClick={sendMessage} w={"50px"}>
                         <ArrowRightIcon fontSize={"lg"} _hover={{color: "#B0B0B0"}} cursor={"pointer"} />
                     </Box>
-                } />
+                </InputRightElement>
             </InputGroup>
         </Box>
     )
