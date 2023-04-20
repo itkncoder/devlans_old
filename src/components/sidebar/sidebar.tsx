@@ -87,7 +87,7 @@ const Sidebar = (): JSX.Element => {
                     </Box>
                 </Card>
                 {value?.docs.map(i => (
-                    <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                    <Card key={i.data().displayName} border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                         <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
                         <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                             <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>{i.data().displayName}</Text>
