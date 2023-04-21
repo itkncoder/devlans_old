@@ -103,7 +103,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                 </Box>
                 {!search &&<Card onClick={() => {
                     setChatNow({
-                        photoURL: "https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true",
+                        photoURL: "https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true",
                         displayName: "DEVLANS",
                         description: "Hamma foydalanuvchilar uchun DEVLANSning rasmiy guruhi",
                         isMine: 100,
@@ -112,7 +112,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     swipeRight?.current.slideNext()
                 }}
                 bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "250px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true"/>
+                    <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true"/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                         <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>DEVLANS</Text>
                         <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
