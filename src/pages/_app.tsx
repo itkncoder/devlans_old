@@ -5,7 +5,7 @@ import {
   CSSReset,
 } from "@chakra-ui/react";
 import "../styles/globals.css"
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 import firebase, { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -30,20 +30,34 @@ const db = getFirestore(app);
 const Context = createContext<any>(null)
 
 function MyApp({ Component, pageProps }: any): JSX.Element {
-  return (
-    <Context.Provider value={{
-      firebase,
-      auth,
-      db
-    }}>
-      <ThemeProvider theme={theme}>
-        <ColorModeProvider>
-          <CSSReset />
-          <Component {...pageProps} />
-        </ColorModeProvider>
-      </ThemeProvider>
-    </Context.Provider>
-  )
+
+    const [chatNow, setChatNow] = useState({
+      photoURL: "https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true",
+      displayName: "DEVLANS",
+      description: "Hamma foydalanuvchilar uchun DEVLANSning rasmiy guruhi",
+      id: 0
+    })
+
+    const [search, setSearch] = useState('')
+
+    return (
+        <Context.Provider value={{
+            firebase,
+            auth,
+            db,
+            chatNow,
+            setChatNow,
+            search,
+            setSearch
+        }}>
+            <ThemeProvider theme={theme}>
+                <ColorModeProvider>
+                    <CSSReset />
+                    <Component {...pageProps} />
+                </ColorModeProvider>
+            </ThemeProvider>
+        </Context.Provider>
+    )
 }
 
 export default MyApp

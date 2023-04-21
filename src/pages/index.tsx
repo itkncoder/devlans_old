@@ -4,12 +4,14 @@ import Sidebar from "../components/sidebar/sidebar"
 import Top from "@/components/top/top"
 import InputField from "@/components/input/input"
 import MessagesBox from "@/components/messagesBox/messagesBox"
-import { useContext, useEffect } from "react"
+import React, { useRef, useState, useContext, useEffect, MutableRefObject } from "react"
 import { Context } from "./_app"
 import { useRouter } from "next/router"
 import { onAuthStateChanged } from "firebase/auth"
 import { useAuthState } from "react-firebase-hooks/auth"
-import Head from "next/head"
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const Index = (): JSX.Element => {
 
@@ -17,6 +19,8 @@ const Index = (): JSX.Element => {
     const [user] = useAuthState(auth)
 
     const router = useRouter()
+
+    const swiperRef = useRef<any>(null)
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -31,13 +35,13 @@ const Index = (): JSX.Element => {
     }, [])
 
     return (
-        <Box bg='#0E1924' h={"100vh"}>
+        <Box bg='#0E1924'>
             <Layout>
-                <Box h={"100%"} w={"100%"} display={"flex"} justifyContent={"space-between"} alignItems={"start"} flexDirection={"row"}>
+                <Box pt={"50px"} h={"100vh"} w={"100%"} display={{base: "none", lg: "flex"}} justifyContent={"space-between"} alignItems={"start"} flexDirection={{base: "column", lg: "row"}}>
                     <Sidebar/>
-                    <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"start"} >
+                    <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
                         <Top />
-                        <Box display={"flex"} height={"100%"} flexDirection={"column"} justifyContent={"start"} alignItems={"start"} >
+                        <Box display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
                             <MessagesBox/>
                         </Box>
                         <Box>
@@ -45,6 +49,25 @@ const Index = (): JSX.Element => {
                         </Box>
                     </Box>
                 </Box>
+                <Swiper 
+                onBeforeInit={(swiper) => {
+                    swiperRef.current = swiper;
+                }} className="swiperApp w-full">
+                    <SwiperSlide className="w-full">
+                        <Sidebar {...{ swipeRight: swiperRef }} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
+                            <Top {...{ swipeLeft: swiperRef }} />
+                            <Box display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
+                                <MessagesBox/>
+                            </Box>
+                            <Box>
+                                <InputField/>
+                            </Box>
+                        </Box>
+                    </SwiperSlide>
+                </Swiper>
             </Layout>
         </Box>
     )

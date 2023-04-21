@@ -14,16 +14,19 @@ import { collection, getFirestore } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollection } from "react-firebase-hooks/firestore"
+import Loader from "../loader/loader"
 
-const Sidebar = (): JSX.Element => {
+const Sidebar = ({swipeRight}: any): JSX.Element => {
 
-    const { auth, db, firebase } = useContext(Context)
+    const { auth, db, firebase, chatNow, setChatNow } = useContext(Context)
     const [user]: any = useAuthState(auth)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [ userName, setName ] = useState('')
     const [ msg, setMsg ] = useState('')
+
+    const [sorted, setSorted] = useState<any | undefined[]>([])
 
     const [value, loading, error] = useCollection(
         collection(getFirestore(firebase), 'chats'),
@@ -52,10 +55,17 @@ const Sidebar = (): JSX.Element => {
         })
     }
 
+    useEffect(() => {
+        const filtered = value?.docs.sort((a: any, b: any) => b.data().id - a.data().id)
+        setSorted(filtered)
+    }, [value])
+
     return (
-        <Box bg={"#18222E"} height={"100%"} maxHeight={'100%'} display={"flex"} alignItems={"start"} justifyContent={"start"}>
-            <Box w={"70px"} display={"flex"} borderRight={"0.5px solid #2B2B2B"} padding={"20px"} justifyContent={"center"} alignItems={"end"} h={"100%"}>
-                <ChatIcon cursor={"pointer"} _hover={{color: "#B0B0B0"}} fontSize={"24px"} onClick={onOpen}/>
+        <Box className="scroll" bg={"#18222E"} height={"100%"} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
+            <Box display={{base: "none", lg: "flex"}} borderRight={"0.5px solid #2B2B2B"} padding={"30px"} justifyContent={"center"} alignItems={"end"} h={"100vh"}>
+                <Box display={"flex"} justifyContent={"center"} >
+                    <ChatIcon position={"fixed"} bottom={"20px"} cursor={"pointer"} _hover={{color: "#B0B0B0"}} fontSize={"24px"} onClick={onOpen}/>
+                </Box>
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
@@ -78,20 +88,47 @@ const Sidebar = (): JSX.Element => {
                     </ModalContent>
                 </Modal>
             </Box>
-            <Box w={"250px"} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"15px"}>
-                <Card border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="DEVLANS" src="https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true"/>
+            <Box maxH={"100vh"} w={{base: "100%", lg: "250px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"5px"}>
+                <Box position={"relative"} w={"100%"}>
+                    {loading && 
+                        <Box zIndex={"10"} top={"100px"} position={"absolute"} w={"100%"} display={"flex"} justifyContent={"center"}>
+                            <Loader/>
+                        </Box>
+                    }
+                </Box>
+                <Card onClick={() => {
+                    setChatNow({
+                        photoURL: "https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true",
+                        displayName: "DEVLANS",
+                        description: "Hamma foydalanuvchilar uchun DEVLANSning rasmiy guruhi",
+                        isMine: 100,
+                        id: 0
+                    })
+                    swipeRight?.current.slideNext()
+                }}
+                bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                    <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true"/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                         <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>DEVLANS</Text>
                         <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
                     </Box>
                 </Card>
-                {value?.docs.map(i => (
-                    <Card key={i.data().displayName} border={"2px solid #1F2E3D"} bg={"#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                {sorted?.map((i: any) => (
+                    <Card onClick={() => {
+                        setChatNow({
+                            displayName: i.data().displayName,
+                            photoURL: i.data().photoURL,
+                            description: i.data().description,
+                            isMine: i.data().isMine,
+                            id: i.data().id
+                        })
+                        swipeRight?.current.slideNext()
+                    }}
+                    key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                         <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
                         <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                             <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>{i.data().displayName}</Text>
-                            <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>- bu kanaldagi oxrigi post eng oxrigisi psot</Text>
+                            <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>{i.data().description}</Text>
                         </Box>
                     </Card>
                 ))}

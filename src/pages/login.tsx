@@ -32,23 +32,12 @@ const Login = (): JSX.Element => {
         const chatsRef = doc(db, 'chats', `${new Date().getMilliseconds()}`);
 
         await signInWithPopup(auth, provider);
-
-        while (!user?.displayName) {
-            await setDoc(chatsRef,
-            { 
-                uid: user?.uid,
-                displayName: user?.displayName,
-                photoURL: user?.photoURL,
-                timestamp: `${new Date().getTime()}`
-            },
-            { merge: true });
-        }
     }
 
     return (
         <Box className='loginBG' h={"100vh"}>
             <Layout>
-                <Box h={"100%"} w={"100%"} display="flex" justifyContent="start" pt={"20px"} gap={"30px"} flexDirection={"column"} alignItems="center">
+                <Box h={"100%"} w={"100%"} display="flex" justifyContent="start" pt={"150px"} gap={"30px"} flexDirection={"column"} alignItems="center">
                     <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} gap={"5px"} >
                         <Link href={"/"}>
                             <Image alt='logo' className='w-20' width={500} height={500} src={logo} />
