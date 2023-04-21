@@ -26,8 +26,8 @@ const Message = ({isMine, name, text, ava, createdAt, id, isAllow, reply}: any) 
                     <ModalCloseButton />
                     <ModalBody display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"start"}>
                     <Box display={"flex"} flexDirection={"row"} gap={"10px"} alignItems={"center"} justifyContent={"start"}>
-                        <Avatar onClick={onOpen} cursor={"pointer"} size={"lg"} name={name} src={ava}/>
-                        <Text fontSize={"xl"} fontWeight={"bold"}>{name}</Text>
+                        <Avatar onClick={onOpen} cursor={"pointer"} size={"md"} name={name} src={ava}/>
+                        <Text fontSize={"lg"} fontWeight={"bold"}>{name}</Text>
                     </Box>
 
                     </ModalBody>
