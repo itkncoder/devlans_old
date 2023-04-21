@@ -66,7 +66,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
     }, [value, search])
 
     return (
-        <Box className="scroll" bg={"#18222E"} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
+        <Box className="scroll" bg={"#18222E"} height={{base: "100%", lg: "fit-content"}} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
             <Box display={{base: "none", lg: "flex"}} borderRight={"0.5px solid #2B2B2B"} padding={"30px"} justifyContent={"center"} alignItems={"end"} h={"100vh"}>
                 <Box display={"flex"} justifyContent={"center"} >
                     <ChatIcon position={"fixed"} bottom={"20px"} cursor={"pointer"} _hover={{color: "#B0B0B0"}} fontSize={"24px"} onClick={onOpen}/>
