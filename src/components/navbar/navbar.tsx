@@ -7,6 +7,7 @@ import { Context } from "@/pages/_app"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"
+import Channel from "./channel"
 
 const Navbar = (): JSX.Element => {
 
@@ -41,28 +42,6 @@ const Navbar = (): JSX.Element => {
             onClose()
 
             await setDoc(chatsRef, { uid: user.uid,
-                displayName: nameChat,
-                photoURL: imgUrl,
-                description: descChat,
-                isMine: user?.uid,
-                id: `${new Date().getTime()}`
-            }, { merge: true });
-        }
-    }
-
-    const addChannel = async () => {
-        if (nameChat) {
-
-            const chatsRef = doc(db, 'chats', `${new Date().getMilliseconds()}`);
-
-            setImgUrl('')
-            setDescChat('')
-            setNameChat('')
-
-            onClose()
-
-            await setDoc(chatsRef, { 
-                uid: user.uid,
                 displayName: nameChat,
                 photoURL: imgUrl,
                 description: descChat,
@@ -108,6 +87,8 @@ const Navbar = (): JSX.Element => {
                                 </ModalFooter>
                             </ModalContent>
                         </Modal>
+
+                        <Channel/>
 
                         <MenuItem><a target="_blank" href="https://t.me/kncoder">Contact</a></MenuItem>
                     </MenuList>

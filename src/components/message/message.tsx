@@ -44,7 +44,7 @@ const Message = ({isMine, name, text, ava, createdAt, id, isAllow, reply}: any) 
                         {!reply && <Text onClick={onOpen} fontSize={"15px"} paddingY={"3px"} _hover={{color: "#E2E2E2"}} cursor={"pointer"} fontWeight={"bold"} >{name}</Text>}
                         {reply && <Box paddingY={"4px"} display={"flex"} justifyContent={"start"} alignItems={"end"}>
                             <Text fontSize={"16px"} color={"#E2E2E2"} fontWeight={"bold"}>|</Text>
-                            <Text fontSize={"12px"} color={"#E2E2E2"}>{reply}</Text>
+                            <Text textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"200px"} fontSize={"12px"} color={"#E2E2E2"}>{reply}</Text>
                         </Box>}
                         <Text paddingBottom={"15px"} fontSize={"14px"} >
                             {
@@ -79,7 +79,7 @@ const Message = ({isMine, name, text, ava, createdAt, id, isAllow, reply}: any) 
                             <Box position={"relative"} boxShadow={"0px 0px 41px #0D0D0D"} minW={"100px"} maxWidth={"450px"} paddingX={"15px"} borderRadius={"15px 15px 0 15px"} paddingY={"8px"} bg={"#088E9A"}>
                                 {reply && <Box display={"flex"} justifyContent={"start"} alignItems={"end"}>
                                     <Text fontSize={"16px"} color={"#E2E2E2"} fontWeight={"bold"}>|</Text>
-                                    <Text fontSize={"12px"} color={"#E2E2E2"}>{reply}</Text>
+                                    <Text textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"200px"} fontSize={"12px"} color={"#E2E2E2"}>{reply}</Text>
                                 </Box>}
                                 <Text paddingBottom={"8px"} fontSize={"14px"}>
                                 {

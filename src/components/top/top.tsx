@@ -43,7 +43,7 @@ const Top = ({swipeLeft}: any): JSX.Element => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader><Text fontWeight={"bold"}>{chatNow?.displayName}</Text></ModalHeader>
+                    <ModalHeader><Text fontWeight={"bold"}>{chatNow?.displayName} {chatNow.isChannel ? "KANALI" : "GURUHI"} </Text></ModalHeader>
                     <ModalCloseButton />
                     <ModalBody display={"flex"} flexDirection={"column"} gap={"20px"} justifyContent={"start"}>
                         <Box display={"flex"} flexDirection={"row"} gap={"10px"} alignItems={"center"} justifyContent={"start"}>

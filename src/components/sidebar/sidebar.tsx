@@ -93,7 +93,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     </ModalContent>
                 </Modal>
             </Box>
-            <Box maxH={"100vh"} w={{base: "100%", lg: "250px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"5px"}>
+            <Box maxH={"100vh"} w={{base: "100%", lg: "280px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"5px"}>
                 <Box position={"relative"} w={"100%"}>
                     {loading && 
                         <Box zIndex={"10"} top={"100px"} position={"absolute"} w={"100%"} display={"flex"} justifyContent={"center"}>
@@ -111,11 +111,11 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     })
                     swipeRight?.current.slideNext()
                 }}
-                bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "250px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "270px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                     <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true"/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>DEVLANS</Text>
-                        <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
+                        <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"16px"}>DEVLANS</Text>
+                        <Text fontSize={"13px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
                     </Box>
                 </Card>}
                 {sorted?.map((i: any) => (
@@ -125,15 +125,16 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                             photoURL: i.data().photoURL,
                             description: i.data().description,
                             isMine: i.data().isMine,
-                            id: i.data().id
+                            id: i.data().id,
+                            isChannel: i.data().isChannel
                         })
                         swipeRight?.current.slideNext()
                     }}
-                    key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "250px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                    key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "270px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                         <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
                         <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
-                            <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>{i.data().displayName}</Text>
-                            <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>{i.data().description}</Text>
+                            <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"16px"}>{i.data().displayName}</Text>
+                            <Text fontSize={"13px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>{i.data().description}</Text>
                         </Box>
                     </Card>
                 ))}
