@@ -35,7 +35,7 @@ const Top = ({swipeLeft}: any): JSX.Element => {
             <Box w={"100%"} display={"flex"} justifyContent={"start"} alignItems={"center"} gap={"15px"}>
                 <ChevronLeftIcon onClick={() => swipeLeft?.current.slidePrev()} display={{base: "flex", lg: "none"}} fontSize={"2xl"} />
                 <Box onClick={onOpen}  w={"100%"} display={"flex"} justifyContent={"start"} alignItems={"center"} gap={"15px"}>
-                    <Avatar size={"sm"} src={chatNow.photoURL}/>
+                    <Avatar bg={"#0E1924"} size={"sm"} src={chatNow.photoURL}/>
                     <Text fontSize={"18px"} fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxWidth={"400px"}>{chatNow?.displayName}</Text>
                 </Box>
             </Box>

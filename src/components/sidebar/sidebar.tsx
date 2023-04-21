@@ -66,7 +66,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
     }, [value, search])
 
     return (
-        <Box className="scroll" bg={"#18222E"} height={"100%"} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
+        <Box className="scroll" bg={"#18222E"} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
             <Box display={{base: "none", lg: "flex"}} borderRight={"0.5px solid #2B2B2B"} padding={"30px"} justifyContent={"center"} alignItems={"end"} h={"100vh"}>
                 <Box display={"flex"} justifyContent={"center"} >
                     <ChatIcon position={"fixed"} bottom={"20px"} cursor={"pointer"} _hover={{color: "#B0B0B0"}} fontSize={"24px"} onClick={onOpen}/>
@@ -93,7 +93,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     </ModalContent>
                 </Modal>
             </Box>
-            <Box maxH={"100vh"} w={{base: "100%", lg: "280px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"5px"}>
+            <Box maxH={"100vh"} w={{base: "100%", lg: "280px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"10px"}>
                 <Box position={"relative"} w={"100%"}>
                     {loading && 
                         <Box zIndex={"10"} top={"100px"} position={"absolute"} w={"100%"} display={"flex"} justifyContent={"center"}>
@@ -112,7 +112,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     swipeRight?.current.slideNext()
                 }}
                 bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "270px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
-                    <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true"/>
+                    <Avatar size={"sm"} bg={"#18222E"} name="devlans" src={"https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true"}/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                         <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"16px"}>DEVLANS</Text>
                         <Text fontSize={"13px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>

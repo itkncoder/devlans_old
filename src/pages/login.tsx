@@ -38,11 +38,11 @@ const Login = (): JSX.Element => {
         <Box className='loginBG' h={"100vh"}>
             <Layout>
                 <Box h={"100%"} w={"100%"} display="flex" justifyContent="start" pt={"150px"} gap={"30px"} flexDirection={"column"} alignItems="center">
-                    <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} gap={"5px"} >
+                    <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
                         <Link href={"/"}>
-                            <Image alt='logo' className='w-20' width={500} height={500} src={logo} />
+                            <Image alt='logo' className='w-80 object-cover h-36' width={500} height={500} src={logo} />
                         </Link>
-                        <Text fontSize={"2xl"} fontWeight={"bold"}>DEVLANS</Text>
+                        <Text fontSize={"3xl"} fontWeight={"bold"}>DEVLANS</Text>
                     </Box>
                     <Card boxShadow={"0px 0px 40px #161616"} maxW={"450px"} w={"90%"} padding={"60px"} borderRadius={"15px"}>
                         <Text fontSize={"26px"} textAlign={"start"} ml={"20px"} mb={"10px"} fontWeight={"bold"} >Kirish</Text>
