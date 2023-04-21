@@ -18,7 +18,7 @@ import Loader from "../loader/loader"
 
 const Sidebar = ({swipeRight}: any): JSX.Element => {
 
-    const { auth, db, firebase, chatNow, setChatNow, search } = useContext(Context)
+    const { auth, db, firebase, chatNow, setChatNow, search, setReply } = useContext(Context)
     const [user]: any = useAuthState(auth)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -110,6 +110,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                         id: 0
                     })
                     swipeRight?.current.slideNext()
+                    setReply(null)
                 }}
                 bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "270px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                     <Avatar size={"sm"} bg={"#18222E"} name="devlans" src={"https://github.com/itkncoder/devlans/blob/main/public/logo.png?raw=true"}/>
@@ -129,6 +130,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                             isChannel: i.data().isChannel
                         })
                         swipeRight?.current.slideNext()
+                        setReply(null)
                     }}
                     key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "270px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                         <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
