@@ -42,7 +42,7 @@ const InputField = () => {
             { 
             !chatNow.isChannel 
             ? 
-            <Box zIndex={"100"} bottom={"0"} w={"100%"} position={{base: "fixed", lg: "static"}}>
+            <Box zIndex={"100"} bottom={"40px"} w={"100%"} position={{base: "fixed", lg: "static"}}>
                 <InputGroup display={"flex"} alignItems={"center"} justifyContent={"center"}>
                     <InputLeftElement height={"100%"} border={"2px solid #1F2E3D"} borderRadius={"10px"} display={reply && "flex" || "none"} justifyContent={"start"} alignItems={"center"} w={"120px"}>
                         <SmallCloseIcon fontSize={"28px"} cursor={"pointer"} px={"5px"} onClick={() => setReply(null)} />

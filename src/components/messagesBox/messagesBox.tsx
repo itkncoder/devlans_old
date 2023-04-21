@@ -43,7 +43,7 @@ const MessagesBox = () => {
 
     return (
         <Box ref={box} scrollBehavior={"smooth"} padding={"20px"} overflow={"auto"} w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} gap={"12px"} alignItems={"start"} justifyContent={"start"} >
-            <Box cursor={"pointer"} _hover={{bg: "#1C2835"}} bg={"#18222E"} borderRadius={"50%"} w={"40px"} height={"40px"} display={"flex"} justifyContent={"center"} alignItems={"center"} onClick={() => box?.current?.scrollTo(0, box.current.scrollHeight)} position={"fixed"} zIndex={"210"} bottom={"60px"} right={"20px"}>
+            <Box cursor={"pointer"} _hover={{bg: "#1C2835"}} bg={"#18222E"} borderRadius={"50%"} w={"40px"} height={"40px"} display={"flex"} justifyContent={"center"} alignItems={"center"} onClick={() => box?.current?.scrollTo(0, box.current.scrollHeight)} position={"fixed"} zIndex={"210"} bottom={{base: "100px", lg: "60px"}} right={"20px"}>
                 <ChevronDownIcon fontSize={"xl"} fontWeight={"bold"} />
             </Box>
             {sorted?.map((i: any) => 
