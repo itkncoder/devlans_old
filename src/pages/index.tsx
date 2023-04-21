@@ -62,7 +62,7 @@ const Index = (): JSX.Element => {
                             <Box display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
                                 <MessagesBox/>
                             </Box>
-                            <Box>
+                            <Box pt={"40px"}>
                                 <InputField/>
                             </Box>
                         </Box>

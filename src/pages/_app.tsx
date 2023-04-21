@@ -39,6 +39,7 @@ function MyApp({ Component, pageProps }: any): JSX.Element {
     })
 
     const [search, setSearch] = useState('')
+    const [reply, setReply] = useState<any>('')
 
     return (
         <Context.Provider value={{
@@ -48,7 +49,9 @@ function MyApp({ Component, pageProps }: any): JSX.Element {
             chatNow,
             setChatNow,
             search,
-            setSearch
+            setSearch,
+            reply,
+            setReply
         }}>
             <ThemeProvider theme={theme}>
                 <ColorModeProvider>

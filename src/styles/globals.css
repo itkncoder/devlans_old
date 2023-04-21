@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
 }
 
 *::-webkit-scrollbar-track {
@@ -14,7 +14,9 @@
     background: #dddddd !important;
     border-radius: 20px;
 }
-
+body {
+    overflow: hidden;
+}
 .loginBG {
     background-image: url(../assets/back.svg);
     background-position: center;

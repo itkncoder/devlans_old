@@ -112,6 +112,9 @@ const Navbar = (): JSX.Element => {
                         <MenuItem><a target="_blank" href="https://t.me/kncoder">Contact</a></MenuItem>
                     </MenuList>
                 </Menu>
+                <Box paddingRight={"10px"}>
+                    <Input value={search} onChange={e => setSearch(e.target.value)} variant={"filled"} placeholder="Qidirish..." fontSize={"14px"} paddingX={"30px"} border={"2px solid #1F2E3D"} />
+                </Box>
             </Box>}
             {isHome && 
                 <Menu>

@@ -18,7 +18,7 @@ import Loader from "../loader/loader"
 
 const Sidebar = ({swipeRight}: any): JSX.Element => {
 
-    const { auth, db, firebase, chatNow, setChatNow } = useContext(Context)
+    const { auth, db, firebase, chatNow, setChatNow, search } = useContext(Context)
     const [user]: any = useAuthState(auth)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -58,7 +58,12 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
     useEffect(() => {
         const filtered = value?.docs.sort((a: any, b: any) => b.data().id - a.data().id)
         setSorted(filtered)
-    }, [value])
+
+        if (search.length) {
+            const searched = sorted?.filter((i: any) => i.data().displayName.toLowerCase().includes(search.trim().toLowerCase()))
+            setSorted(searched) 
+        }
+    }, [value, search])
 
     return (
         <Box className="scroll" bg={"#18222E"} height={"100%"} overflowX={"hidden"} pr={{lg: "55px"}} display={"flex"} alignItems={"start"} justifyContent={"start"}>
@@ -96,7 +101,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                         </Box>
                     }
                 </Box>
-                <Card onClick={() => {
+                {!search &&<Card onClick={() => {
                     setChatNow({
                         photoURL: "https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true",
                         displayName: "DEVLANS",
@@ -106,13 +111,13 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     })
                     swipeRight?.current.slideNext()
                 }}
-                bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                bg={chatNow?.id === 0 ? "#141D27" : "#1C2835"} border={"2px solid #1F2E3D"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "250px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                     <Avatar size={"sm"} name="devlans" src="https://github.com/itkncoder/devlans/blob/main/src/assets/logo.png?raw=true"/>
                     <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                         <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>DEVLANS</Text>
                         <Text fontSize={"14px"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"180px"}>DEVLANS - community</Text>
                     </Box>
-                </Card>
+                </Card>}
                 {sorted?.map((i: any) => (
                     <Card onClick={() => {
                         setChatNow({
@@ -124,7 +129,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                         })
                         swipeRight?.current.slideNext()
                     }}
-                    key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={"100%"} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
+                    key={i.data().displayName} border={"2px solid #1F2E3D"} bg={chatNow?.id === i.data().id ? "#141D27" : "#1C2835"} _hover={{bg: "#18222E"}} cursor={"pointer"} marginY={"5px"} paddingX={"12px"} paddingY={"7px"} width={{base: "100%", lg: "250px"}} gap={"10px"} display={"flex"} flexDirection={"row"} justifyContent={"start"} alignItems={"center"}>
                         <Avatar size={"sm"} name={i.data().displayName} src={i.data().photoURL}/>
                         <Box display={"flex"} flexDirection={"column"} alignItems={"start"} maxW={"80%"}>
                             <Text fontWeight={"bold"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"} maxW={"100%"} fontSize={"18px"}>{i.data().displayName}</Text>
