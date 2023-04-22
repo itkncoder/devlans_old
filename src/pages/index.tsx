@@ -39,7 +39,7 @@ const Index = (): JSX.Element => {
             <Layout>
                 <Box pt={"50px"} h={"100vh"} w={"100%"} display={{base: "none", lg: "flex"}} justifyContent={"space-between"} alignItems={"start"} flexDirection={{base: "column", lg: "row"}}>
                     <Sidebar/>
-                    <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
+                    <Box w={"100%"} height={"100vh"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
                         <Top />
                         <Box display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
                             <MessagesBox/>
@@ -59,7 +59,7 @@ const Index = (): JSX.Element => {
                     <SwiperSlide>
                         <Box w={"100%"} height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"stretch"} justifyContent={"space-between"} >
                             <Top {...{ swipeLeft: swiperRef }} />
-                            <Box display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
+                            <Box pb={"90px"} display={"flex"} height={`80vh`} flexDirection={"column"} justifyContent={"stretch"} alignItems={"start"} >
                                 <MessagesBox/>
                             </Box>
                             <Box>

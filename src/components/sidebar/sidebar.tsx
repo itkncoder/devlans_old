@@ -93,7 +93,7 @@ const Sidebar = ({swipeRight}: any): JSX.Element => {
                     </ModalContent>
                 </Modal>
             </Box>
-            <Box maxH={"100vh"} w={{base: "100%", lg: "280px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"10px"}>
+            <Box maxH={"100vh"} w={{base: "100%", lg: "320px"}} display={"flex"} flexDirection={"column"} alignItems={"start"} marginX={"15px"} pt={"10px"}>
                 <Box position={"relative"} w={"100%"}>
                     {loading && 
                         <Box zIndex={"10"} top={"100px"} position={"absolute"} w={"100%"} display={"flex"} justifyContent={"center"}>
